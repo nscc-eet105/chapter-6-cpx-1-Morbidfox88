@@ -1,34 +1,21 @@
 from adafruit_circuitplayground import cp
-import time
-import random
+import time# Write your code here :-)
 
-# Chad Collard
-# cpx6-1
-# 6/27/2025
-
-num_pixels = 10
+while True:
+    for i in range(10):
+        cp.pixels[i] = (0, 100, 0)
+        time.sleep(.5)
 
 
-def pixel_color():
-    red = random.randint(0, 255)
-    green = random.randint(0, 255)
-    blue = random.randint(0, 255)
-    return (red, green, blue)
+    cp.pixels.fill((0, 0, 0))
+    time.sleep(1.0)
 
 
-def light_seq(pixel):
-    blackout()
-    while True:
-        for pixel in light_seq:
-            pixel = random.randint(0, num_pixels - 1)
-            cp.pixels[pixel] = pixel_color()
-            time.sleep(0.1)
+    for i in range(9, -1, -1):
+        cp.pixels[i] = (255, 0, 0)
+        time.sleep(0.5)
+
+    cp.pixels.fill((0, 0, 0))
+    time.sleep(1.0)
 
 
-def blackout():
-    for i in range(num_pixels):
-        cp.pixels[i] = (0, 0, 0)
-
-
-light_seq()
-blackout()

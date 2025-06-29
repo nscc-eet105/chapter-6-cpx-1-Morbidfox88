@@ -15,20 +15,13 @@ def pixel_color():
     blue = random.randint(0, 255)
     return (red, green, blue)
 
-
-def light_seq(pixel):
-    blackout()
-    while True:
-        for pixel in light_seq:
-            pixel = random.randint(0, num_pixels - 1)
-            cp.pixels[pixel] = pixel_color()
-            time.sleep(0.1)
-
-
 def blackout():
     for i in range(num_pixels):
         cp.pixels[i] = (0, 0, 0)
 
+while True:
+    for pixel in range(num_pixels):
+        cp.pixels[pixel] = pixel_color()
+        time.sleep(0.01)
 
-light_seq()
-blackout()
+
