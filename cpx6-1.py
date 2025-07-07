@@ -2,12 +2,7 @@ from adafruit_circuitplayground import cp
 import time
 import random
 
-# Chad Collard
-# cpx6-1
-# 6/27/2025
-
-num_pixels = 10
-
+pattern = [0, 9, 8, 3, 5, 2, 6, 7, 1, 4]
 
 def pixel_color():
     red = random.randint(0, 255)
@@ -16,12 +11,21 @@ def pixel_color():
     return (red, green, blue)
 
 def blackout():
-    for i in range(num_pixels):
-        cp.pixels[i] = (0, 0, 0)
+    cp.pixels.fill((0, 0, 0))
+
 
 while True:
-    for pixel in range(num_pixels):
+    cp.pixels.fill((0, 0, 0,))
+    time.sleep(1.0)
+    for pixel in pattern:
         cp.pixels[pixel] = pixel_color()
-        time.sleep(0.01)
+        time.sleep(1.0)
+        cp.pixels[pixel] = (0, 0, 0)
+
+    time.sleep(1.0)
+
+blackout()
+
+
 
 

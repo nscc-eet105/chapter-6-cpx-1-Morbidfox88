@@ -1,21 +1,27 @@
 from adafruit_circuitplayground import cp
 import time# Write your code here :-)
 
-while True:
+def on():
     for i in range(10):
         cp.pixels[i] = (0, 100, 0)
-        time.sleep(.5)
+
+def off():
+    for i in range(10):
+        cp.pixels[i] = (0, 0, 0)
+
+while True:
+    if cp.touch_A1:
+        on()
+    else:
+        off()
 
 
-    cp.pixels.fill((0, 0, 0))
-    time.sleep(1.0)
 
 
-    for i in range(9, -1, -1):
-        cp.pixels[i] = (255, 0, 0)
-        time.sleep(0.5)
 
-    cp.pixels.fill((0, 0, 0))
-    time.sleep(1.0)
+
+
+
+
 
 
